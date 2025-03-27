@@ -1,5 +1,17 @@
 import json
 
+try:
+    with open('your_file.json', 'r', encoding='utf-8-sig') as file:
+        words_data = json.load(file)
+except json.JSONDecodeError as e:
+    print(f"Error reading JSON file: {e}")
+    words_data = {}  # Initialize as an empty dictionary in case of failure
+except FileNotFoundError:
+    print("File not found.")
+    words_data = {}  # Initialize as empty if file doesn't exist
+
+# Now, you can proceed to work with words_data
+
 class User:
     def __init__(self, name, email):
         self.name = name
@@ -8,34 +20,23 @@ class User:
     def display_info(self):
         return f"User: {self.name}, Email: {self.email}"
     
-class Student(User):
-    def __init__(self, name, email, student_id):
-        super().__init__(name,email) # Call the parent class constructor
-        self.student_id = student_id
-    
-    def display_info(self):
-        return f"User: {self.name}, Email: {self.email}, Student ID: {self.student_id}"
-
-class Teacher(User):
+class teacher(User):
     def __init__(self, name, email, subject):
         super().__init__(name,email)
         self.subject = subject
 
-    def display_info(self):
-        return f"User: {self.name}, Email: {self.email}, Subject: {self.subject}"
-    
-class Administrator(User):
-    def __init__(self, name, email, role):
-        super().__init__(name, email)
-        self.role = role
-    
-    def display_info(self):
-        return f"Administrator: {self.name}, Email: {self.email}, Role: {self.role}"
-    
-student = Student("Alice", "alice@example.com", "S12345")
-teacher = Teacher("Mr. Smith", "smith@example.com", "Mathematics")
-administrator = Administrator("Ms. Johnson", "johnson@example.com", "Principal")
+class Word:
+    def __init__(self, word, definition):
+        self.word = word
+        self.definition = definition
+    def to_dict(self):
+        return {"word": self.word, "definition": self.definition}
+words = [
+    Word("Blah", "This word is blah"),
+    Word("r", "r")
+]      
+new_word = Word("Chevrolet", "A very expensive car brand")
+words.append(new_word.to_dict())
 
-print(student.display_info())  # Output: Student: Alice, Email: alice@example.com, Student ID: S12345
-print(teacher.display_info())  # Output: Teacher: Mr. Smith, Email: smith@example.com, Subject: Mathematics
-print(administrator.display_info())  # Output: Administrator: Ms. Johnson, Email: johnson@example.com, Role: Principal
+with open("flashCard.json", "w") as file:
+    json.dump(words, file, indent=4)
