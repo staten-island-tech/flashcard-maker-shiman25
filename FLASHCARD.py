@@ -1,29 +1,21 @@
 import json
-
 try:
-    with open('your_file.json', 'r', encoding='utf-8-sig') as file:
+    with open("flashCard.json", "r") as file:
         words_data = json.load(file)
-except json.JSONDecodeError as e:
-    print(f"Error reading JSON file: {e}")
-    words_data = {}  # Initialize as an empty dictionary in case of failure
 except FileNotFoundError:
-    print("File not found.")
-    words_data = {}  # Initialize as empty if file doesn't exist
+    words_data = []
 
-# Now, you can proceed to work with words_data
-
-class User:
-    def __init__(self, name, email):
+class Teacher:
+    def __init__(self, name):
         self.name = name
-        self.email = email
-
-    def display_info(self):
-        return f"User: {self.name}, Email: {self.email}"
-    
-class teacher(User):
-    def __init__(self, name, email, subject):
-        super().__init__(name,email)
-        self.subject = subject
+    def login(self):
+        return f"you are logged in as {self.name}"
+    def add_words(self):
+        w = input("the word")
+        d = input("the definition")
+        new_word = Word(w, d)
+        words_data.append(new_word.to_dict())  # Add the new word to the words_data lis
+        
 
 class Word:
     def __init__(self, word, definition):
@@ -31,12 +23,13 @@ class Word:
         self.definition = definition
     def to_dict(self):
         return {"word": self.word, "definition": self.definition}
+
 words = [
     Word("Blah", "This word is blah"),
     Word("r", "r")
 ]      
-new_word = Word("Chevrolet", "A very expensive car brand")
-words.append(new_word.to_dict())
+word = Word("Chevrolet", "A very expensive car brand")
+words_data.append(word.to_dict())
 
 with open("flashCard.json", "w") as file:
-    json.dump(words, file, indent=4)
+    json.dump(words_data, file, indent=4)
