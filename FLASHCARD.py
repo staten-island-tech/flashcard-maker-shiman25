@@ -1,4 +1,5 @@
 import json
+import random
 try:
     with open("flashCard.json", "r") as file:
         words_data = json.load(file)
@@ -14,8 +15,15 @@ class Teacher:
         w = input("the word")
         d = input("the definition")
         new_word = Word(w, d)
-        words_data.append(new_word.to_dict())  # Add the new word to the words_data lis
-        
+        words_data.append(new_word)  # Add the new word to the words_data
+
+class Student:
+    def __init__(self, name):
+        self.name = name
+    def login(self):
+        return f"you are logged in as {self.name}"
+    def quiz(self):
+        quizzie()
 
 class Word:
     def __init__(self, word, definition):
@@ -28,10 +36,20 @@ words = [
     Word("Blah", "This word is blah"),
     Word("r", "r")
 ]      
+
 word = Word("Chevrolet", "A very expensive car brand")
 words_data.append(word.to_dict())
 
 with open("flashCard.json", "w") as file:
     json.dump(words_data, file, indent=4)
 
-""""""
+def quizzie(streak,points):
+    question = random.randint()
+    answer = input("enter the definition")
+# random digit -> find the corresponding word    
+    if definition == answer:
+        points = points*streak*2
+        streak +=1
+    else:
+        print("incorrect")
+        streak = 0
