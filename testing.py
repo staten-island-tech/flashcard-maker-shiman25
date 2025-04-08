@@ -65,33 +65,4 @@ with open("flashCard.json", "w") as file:
 
 print(a) """
 
-import json
 
-# Try to read the existing data from the file
-try:
-    with open("flashCard.json", "r") as file:
-        content = file.read().strip()  # Read the file and strip any surrounding whitespace
-        if content:  # If the file is not empty
-            a = json.loads(content)  # Load the JSON data
-        else:
-            a = []  # If the file is empty, initialize an empty list
-except (FileNotFoundError, json.JSONDecodeError):
-    a = []  # If the file doesn't exist or is invalid, initialize an empty list
-
-# New data to be added
-b = {
-    "name": "Alice",
-    "age": 30,
-    "city": "New York",
-    "is_student": False
-}
-
-# Append the new data to the existing data
-a.append(b)
-
-# Write the updated list back to the file
-with open("flashCard.json", "w") as file:
-    json.dump(a, file, indent=4)
-
-# Print the updated contents of the file
-print(a)

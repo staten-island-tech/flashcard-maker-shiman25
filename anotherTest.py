@@ -1,15 +1,23 @@
 import json
+
+# Attempt to load existing data from the file
 try:
     with open("flashCard.json", "r") as file:
-        words_data = json.load(file)
+        a = json.load(file)  # Directly load JSON data from the file
 except (FileNotFoundError, json.JSONDecodeError):
-    words_data = []
+    a = []  # Initialize an empty list if file is not found or the content is invalid
 
-class Teacher:
+# New data to be added
+b = {
+    "name": "Elise",
+    "age": 19,
+    "random": "Yes",
+    "isStudent": True
+}
+
+class C:
     def __init__(self, name):
         self.name = name
-    def login(self):
-        return f"you are logged in as {self.name}"
     def add_words(self):    
         keys= []
         values = []
@@ -21,24 +29,13 @@ class Teacher:
             values.append(definition)
             add = input("continue? (yes or no) ")
         pair = dict(zip(keys, values))
-        words_data.append(pair)  # Add the new word to the words_data
+        return pair
         
+Sofia = C("Sofia")
+result = Sofia.add_words()
 
-"""
-class Student:
-    def __init__(self, name):
-        self.name = name
-    def login(self):
-        return f"you are logged in as {self.name}"
-    def quiz(self):
-        ...
+if result:
+    a.append(result)
 
-"""
 with open("flashCard.json", "w") as file:
-    json.dump(words_data, file, indent=4) 
-
-Sofia = Teacher("Sofia")
-print(Sofia.login())
-Sofia.add_words()
-print(words_data)
-
+    json.dump(a, file, indent=2)
