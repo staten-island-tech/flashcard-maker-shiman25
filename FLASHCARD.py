@@ -21,7 +21,7 @@ class Teacher:
             values.append(definition)
             add = input("continue? (yes or no) ")
         pair = dict(zip(keys, values))
-        words_data.append(pair)  # Add the new word to the words_data
+        return pair
         
 
 """
