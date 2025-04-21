@@ -34,11 +34,11 @@ class Student:
         ...
 
 """
-with open("flashCard.json", "w") as file:
-    json.dump(words_data, file, indent=4) 
-
 Sofia = Teacher("Sofia")
 print(Sofia.login())
-Sofia.add_words()
-print(words_data)
 
+new_words = Sofia.add_words()
+words_data.append(new_words)
+
+with open("flashCard.json", "w") as file:
+    json.dump(words_data, file, indent=4) 

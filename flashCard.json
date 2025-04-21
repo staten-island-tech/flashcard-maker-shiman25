@@ -1,1 +1,10 @@
-[]
+[
+    {
+        "happy": "positive emotion",
+        "sad": "negative emotion",
+        "apple": "fruit"
+    },
+    {
+        "abc": "letters"
+    }
+]
