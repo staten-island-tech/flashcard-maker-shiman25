@@ -65,4 +65,4 @@ with open("flashCard.json", "w") as file:
 
 print(a) """
 
-
+storage = []
