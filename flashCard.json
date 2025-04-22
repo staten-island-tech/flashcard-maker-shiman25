@@ -1,10 +1,8 @@
 [
     {
-        "happy": "positive emotion",
-        "sad": "negative emotion",
-        "apple": "fruit"
+        "hi": "greeting"
     },
     {
-        "abc": "letters"
+        "ant": "buggy"
     }
 ]

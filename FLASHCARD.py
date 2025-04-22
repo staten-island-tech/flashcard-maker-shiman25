@@ -1,3 +1,4 @@
+import random
 import json
 try:
     with open("flashCard.json", "r") as file:
@@ -19,26 +20,31 @@ class Teacher:
             keys.append(word)
             definition = input("the definition ")
             values.append(definition)
-            add = input("continue? (yes or no) ")
+            add = input("continue? (type y or n) ")
         pair = dict(zip(keys, values))
         return pair
-        
 
-"""
-class Student:
-    def __init__(self, name):
-        self.name = name
-    def login(self):
-        return f"you are logged in as {self.name}"
-    def quiz(self):
-        ...
+Login = input("Student Mode or Teacher Mode? (type t or s): ")
+if Login == "t":
+    teach = Teacher("teach")
+    print(teach.login())
 
-"""
-Sofia = Teacher("Sofia")
-print(Sofia.login())
+    new_words = teach.add_words()
+    words_data.append(new_words)
 
-new_words = Sofia.add_words()
-words_data.append(new_words)
+    with open("flashCard.json", "w") as file:
+        json.dump(words_data, file, indent=4) 
 
-with open("flashCard.json", "w") as file:
-    json.dump(words_data, file, indent=4) 
+if Login == "s":
+    print("start quiz!")
+
+    with open("flashCard.json", "r") as file:
+        dictionary = json.load(file)
+
+   
+    random.shuffle(dictionary)
+    first_key = list(dictionary.keys())[0]
+    print(first_key)
+    for key in dictionary:
+        print(key)
+
