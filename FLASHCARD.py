@@ -43,15 +43,30 @@ if Login == "s":
 
    
     random.shuffle(dictionary)
-    for key in dictionary:
-    w = []
-    d = []
 
-for d in dictionary:
-    for k, v in d.items():
-        keys.append(k)
-        values.append(v)
 
-print("Keys:", keys)
-print("Values:", values)
+""" w = []
+d = []
+
+for i in dictionary:
+    for k, v in i.items():
+        w.append(k)
+        d.append(v)
+
+for i in w:
+    print(w[i])
+    answer = input("Definition? ")
+    if answer == (d[i]):
+        print("Correct!")
+        streak +=1
+        point +=1
+        if streak == 5:
+            streak == 0
+            point += 5
+
+    else:
+        print("Incorrect!")
+        streak == 0 """
+
+
 
