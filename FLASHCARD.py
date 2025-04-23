@@ -14,8 +14,8 @@ class Teacher:
     def add_words(self):    
         keys= []
         values = []
-        add = "yes"
-        while add == "yes":
+        add = "y"
+        while add == "y":
             word = input("the word ")
             keys.append(word)
             definition = input("the definition ")
@@ -43,8 +43,15 @@ if Login == "s":
 
    
     random.shuffle(dictionary)
-    first_key = list(dictionary.keys())[0]
-    print(first_key)
     for key in dictionary:
-        print(key)
+    w = []
+    d = []
+
+for d in dictionary:
+    for k, v in d.items():
+        keys.append(k)
+        values.append(v)
+
+print("Keys:", keys)
+print("Values:", values)
 

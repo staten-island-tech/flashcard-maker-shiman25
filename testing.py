@@ -65,10 +65,5 @@ with open("flashCard.json", "w") as file:
 
 print(a) """
 
-import json
-
-with open('flashCard.json', 'r') as file:
-    data = json.load(file)
-
-third_item = data[0]
-print(third_item)
+first_key = list(d.keys())[0]
+print(first_key)  # Output: hi
