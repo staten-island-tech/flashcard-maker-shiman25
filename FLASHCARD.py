@@ -39,24 +39,29 @@ if Login == "s":
     print("start quiz!")
 
     with open("flashCard.json", "r") as file:
-        dictionary = json.load(file)
+        theCards = json.load(file)
+    #random.shuffle(theCards)
 
-   
-    random.shuffle(dictionary)
-
-
-""" w = []
+print(theCards)
+w = []
 d = []
+streak = 0
+for i in theCards:
+    for key, value in i.items():
+        w.append(key)
+        d.append(value)
 
-for i in dictionary:
-    for k, v in i.items():
-        w.append(k)
-        d.append(v)
+combined = list(zip(w, d))
+print(combined)
 
-for i in w:
-    print(w[i])
+""" for word in w:
+    print(word)
     answer = input("Definition? ")
-    if answer == (d[i]):
+    k = d[0]
+    print("the correct answer is: ", k)
+        
+    
+    if answer == k:
         print("Correct!")
         streak +=1
         point +=1
@@ -66,7 +71,4 @@ for i in w:
 
     else:
         print("Incorrect!")
-        streak == 0 """
-
-
-
+        streak == 0  """
