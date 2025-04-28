@@ -47,19 +47,10 @@ if Login == "s":
         combined.update(d)
     streak = 0
     point = 0
-    """ w = []
-    d = []
-
-    for i in theCards:
-        for key, value in i.items():
-            w.append(key)
-            d.append(value)
-            
-    combined = dict(zip(w, d))
-    print (combined)
-    """
+    
     start = "y"
     for word in combined:
+        start = input("wanna a word? (y or n) ")
         if start == "y":
             print(word)
             answer = input("definition? ") 
@@ -77,7 +68,19 @@ if Login == "s":
                 print(definition)
                 streak == 0  
         else:
-            print("your total points:", point)
-            print("your total streak:", streak)
+            
             exit()
-        start = input("wanna another word? (y or n) ")
+    print("your total points:", point)
+    print("your total streak:", streak)
+    
+    """ w = []
+    d = []
+
+    for i in theCards:
+        for key, value in i.items():
+            w.append(key)
+            d.append(value)
+            
+    combined = dict(zip(w, d))
+    print (combined)
+    """
