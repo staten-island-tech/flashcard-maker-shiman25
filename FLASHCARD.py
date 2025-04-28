@@ -40,35 +40,44 @@ if Login == "s":
 
     with open("flashCard.json", "r") as file:
         theCards = json.load(file)
-    #random.shuffle(theCards)
+    random.shuffle(theCards)
 
-print(theCards)
-w = []
-d = []
-streak = 0
-for i in theCards:
-    for key, value in i.items():
-        w.append(key)
-        d.append(value)
+    combined = {}
+    for d in theCards:
+        combined.update(d)
+    streak = 0
+    point = 0
+    """ w = []
+    d = []
 
-combined = list(zip(w, d))
-print(combined)
-
-""" for word in w:
-    print(word)
-    answer = input("Definition? ")
-    k = d[0]
-    print("the correct answer is: ", k)
-        
-    
-    if answer == k:
-        print("Correct!")
-        streak +=1
-        point +=1
-        if streak == 5:
-            streak == 0
-            point += 5
-
-    else:
-        print("Incorrect!")
-        streak == 0  """
+    for i in theCards:
+        for key, value in i.items():
+            w.append(key)
+            d.append(value)
+            
+    combined = dict(zip(w, d))
+    print (combined)
+    """
+    start = "y"
+    for word in combined:
+        if start == "y":
+            print(word)
+            answer = input("definition? ") 
+            definition = combined[word]
+            if answer == definition:
+                print("Correct!")
+                streak +=1
+                point +=1
+                if streak% 5 == 0:
+                    point += 5
+                    print("Add 5 points!!!")
+            
+            else:
+                print("Incorrect!")
+                print(definition)
+                streak == 0  
+        else:
+            print("your total points:", point)
+            print("your total streak:", streak)
+            exit()
+        start = input("wanna another word? (y or n) ")
