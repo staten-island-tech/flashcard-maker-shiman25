@@ -44,10 +44,10 @@ if Login == "s":
 
     combined = {}
     for d in theCards:
-        combined.update(d)
+        combined.update(d) #make the file into a big dictionary
+
     streak = 0
     point = 0
-    
     start = "y"
     for word in combined:
         start = input("wanna a word? (y or n) ")
